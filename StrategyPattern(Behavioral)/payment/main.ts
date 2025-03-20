@@ -1,4 +1,4 @@
-import * as readline from 'readline';
+import * as readline from "readline";
 import { PaymentController } from "./context/PaymentController";
 import { Payment } from "./strategy/Payment";
 import { CreditCardPayment } from "./concrete_strategies/CreditCardPayment";
@@ -12,34 +12,33 @@ console.log("3. For MasterCard payment.");
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
-rl.question('Enter your payment method number: ', (answer) => {
+rl.question("Enter your payment method number: ", (answer) => {
   let paymentMethod: Payment;
 
   switch (answer) {
-    case '1':
-      paymentMethod = new CreditCardPayment;
+    case "1":
+      paymentMethod = new CreditCardPayment();
       break;
-    case '2':
-      paymentMethod = new DebitCardPayment;
+    case "2":
+      paymentMethod = new DebitCardPayment();
       break;
-    case '3':
-      paymentMethod = new MasterCardPayment;
+    case "3":
+      paymentMethod = new MasterCardPayment();
       break;
     default:
       throw new Error("Invalid input!");
   }
 
-  console.log('Start making payment process...');
+  console.log("Start making payment process...");
 
   const paymentController = new PaymentController(paymentMethod);
 
   paymentController.makePayment();
 
   console.log("Payment process completed.");
-  console.log('Happy Coding.');
-})
-
-
+  console.log("Happy Coding.");
+  rl.close();
+});
