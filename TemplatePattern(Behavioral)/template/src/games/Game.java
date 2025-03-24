@@ -8,7 +8,7 @@ public abstract class Game {
 
     abstract void end();
 
-    //template method - template method cannot be override by subclasses
+    // template method - template method cannot be override by subclasses
     public final void play() {
         initialize();
 

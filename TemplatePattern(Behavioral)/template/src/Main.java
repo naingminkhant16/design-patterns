@@ -1,6 +1,10 @@
 import games.Chess;
 import games.Football;
 import games.Game;
+import house.BrickHouseBuilder;
+import house.GlassHouseBuilder;
+import house.HouseBuilder;
+import house.WoodenHouseBuilder;
 import networks.Facebook;
 import networks.Network;
 import networks.Twitter;
@@ -11,9 +15,10 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        //  network();
-        game();
+    public static void main(String[] args) throws IOException {
+//        network();
+//        game();
+        house();
     }
 
     private static void game() {
@@ -70,5 +75,16 @@ public class Main {
         if (network != null) {
             network.post(message);
         }
+    }
+
+    private static void house() {
+        HouseBuilder woodenHouse = new WoodenHouseBuilder();
+        woodenHouse.buildHouse();
+
+        HouseBuilder brickHouse = new BrickHouseBuilder();
+        brickHouse.buildHouse();
+
+        HouseBuilder glassHouse = new GlassHouseBuilder();
+        glassHouse.buildHouse();
     }
 }
