@@ -5,10 +5,12 @@ export class NewsAgency {
   private news: string = "";
 
   public addChannel(channel: Channel): void {
+    if (this.channels.includes(channel)) return;
     this.channels.push(channel);
   }
 
   public removeChannel(channel: Channel): void {
+    if (!this.channels.includes(channel)) return;
     this.channels = this.channels.filter((ch) => ch !== channel);
   }
 
